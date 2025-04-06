@@ -13,6 +13,10 @@ forums](https://discuss.streamlit.io).
 In the meantime, below is an example of what you can do with just a few lines of code:
 """
 
+st.title("Welcome to Streamlit!")
+
+st.write("Random Altair chart")
+
 num_points = st.slider("Number of points in spiral", 1, 10000, 1100)
 num_turns = st.slider("Number of turns in spiral", 1, 300, 31)
 
@@ -38,3 +42,15 @@ st.altair_chart(alt.Chart(df, height=700, width=700)
         color=alt.Color("idx", legend=None, scale=alt.Scale()),
         size=alt.Size("rand", legend=None, scale=alt.Scale(range=[1, 150])),
     ))
+
+
+st.write("STEM charts...")
+
+@st.cache_data
+def stem_df():
+    return pd.read_csv("data/women_in_stem.csv")
+
+
+st.table(stem_df)
+
+
